@@ -1,0 +1,6 @@
+# Install with: pip install -r requirements.txt
+# TODO: once everything runs, pin exact versions here so the project is reproducible.
+
+fastapi
+uvicorn[standard]
+jinja2

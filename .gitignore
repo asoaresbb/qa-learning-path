@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# QA Learning Path additions
+*.db
+*.sqlite3
+.DS_Store
