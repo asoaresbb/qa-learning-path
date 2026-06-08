@@ -1,5 +1,5 @@
 [README.md](https://github.com/user-attachments/files/28723021/README.md)
-# QA Foundations: Networking and Automation
+# QA Foundations: Building and Testing a Web App from the Ground Up
 
 A learning path for someone entering QA who wants to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
 
@@ -32,7 +32,7 @@ Where the client-server model stops being theory. A REST service built with Fast
 Adds to the project: endpoints to create and list candidates.
 
 ### 6. SQL and the database
-The persistence layer behind the service. Schema design, CRUD, joins, and the service talking to the database. SQLite is enough to start; Postgres brings it closer to production.
+The persistence layer behind the service. Schema design, CRUD, joins, and the service talking to the database. SQLite is enough to start; MySQL brings it closer to production.
 Adds to the project: candidate records stored and queried in a real database.
 
 ### 7. Authentication and sessions
@@ -91,4 +91,4 @@ Two questions the subject raises naturally, each a good lesson in its own right.
 
 ## Stack
 
-Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or Postgres, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, OWASP ZAP for security, Locust or k6 for performance, Docker, and GitHub Actions.
+Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or MySQL, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, OWASP ZAP for security, Locust or k6 for performance, Docker, and GitHub Actions.
