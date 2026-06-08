@@ -43,43 +43,47 @@ Adds to the project: a protected administration view for the consultant.
 Start with server-side rendering using Jinja2, the standard Python template engine. The server receives the request, talks to the database, renders the full page and returns it, which keeps a beginner away from async, JSON synchronisation and CORS while they build the candidate form. Once that flow is solid, split the submission into a JSON endpoint consumed by JavaScript, which introduces the model used in most modern stacks and opens a clean API layer to test. Plain HTML, CSS and JavaScript are the right starting point, since the DOM, events and forms are what the browser automation will interact with later.
 Adds to the project: the public candidate form, then a JSON API behind it.
 
-### 9. API testing
+### 9. Structuring the app: the MVC pattern
+With the model (the database layer), the view (the templates) and the controller (the routes) all present, the natural next step is to separate them properly. Business logic moves out of the templates and the route handlers into a service layer, leaving controllers thin and views dumb. This is not architecture for its own sake: a service that holds the logic in plain functions is what makes unit tests possible, and a thin controller is what keeps the API layer clean to test. Good structure and testability are the same goal seen from two sides. The same separation decouples the data layer: with database access isolated behind the service, swapping SQLite for MySQL touches only the model, not the controllers or the views, which is exactly what lets module 6 start on SQLite and move to MySQL later without rewriting the application.
+Adds to the project: the service reorganised into model, view and controller, with the candidate logic in its own testable layer.
+
+### 10. API testing
 Now there is an API of one's own to test, which is far better than testing someone else's blind. Assertions on status, contract and schema, error paths, and authentication. pytest with httpx, or Postman to see it first.
 Adds to the project: a suite against the service, including the paths that fail.
 
-### 10. Playwright and the UI
+### 11. Playwright and the UI
 Browser automation, with the Page Object Model from the start so no bad habits form. Selectors, waits and fixtures. Server-rendered pages carry their content in the initial HTML, which means fewer waits and fewer flaky tests than a client-rendered equivalent.
 Adds to the project: end-to-end coverage of the main flows, candidate submission and admin login included.
 
-### 11. Test data and isolation
+### 12. Test data and isolation
 Fixtures, factories, and creating then destroying state per test. This is what separates a stable suite from one full of flaky tests.
 Adds to the project: each end-to-end test creating and cleaning up its own candidate.
 
-### 12. Accessibility
+### 13. Accessibility
 Bring axe checks into Playwright. Forms are exactly where accessibility matters, which ties this to the candidate form and to the European Accessibility Act.
 Adds to the project: an accessibility scan of the form, with fixes for what it finds.
 
-### 13. Security testing
+### 14. Security testing
 The non-functional dimension that matters most given the data the site collects. The OWASP Top 10 applied to a system the learner owns: injection, broken authentication, input validation, and the file-upload attack surface that the CV question raises. The point is to test for what the application must refuse to do, not only what it should do. Tools such as OWASP ZAP for a baseline scan, alongside hand-written negative tests against the API.
 Adds to the project: negative and abuse-case tests against the form and the API, plus a baseline scan of the running site.
 
-### 14. Performance testing
-How the service behaves under load rather than whether it is correct. Latency, throughput and the difference between a single slow request and a system that degrades under concurrency. Load testing with Locust or k6 against the candidate submission endpoint, reading percentiles instead of averages and knowing what a meaningful threshold looks like.
+### 15. Performance testing
+How the service behaves under load rather than whether it is correct. Latency, throughput and the difference between a single slow request and a system that degrades under concurrency. Load testing with k6 against the candidate submission endpoint, reading percentiles instead of averages and knowing what a meaningful threshold looks like.
 Adds to the project: a load test against the submission flow, with a baseline the suite can hold to.
 
-### 15. BDD and Gherkin
+### 16. BDD and Gherkin
 Given/when/then and feature files, wired to pytest-bdd or Playwright. The point to land is that Gherkin exists to align understanding, not to decorate tests.
 Adds to the project: the candidate scenarios rewritten as executable Gherkin.
 
-### 16. ATDD
+### 17. ATDD
 More a practice and a mindset than a tool: the three amigos, and writing acceptance criteria before the code.
 Adds to the project: a new feature built acceptance-first.
 
-### 17. Docker
+### 18. Docker
 Running the application, the database and then the tests reproducibly. It settles the "works on my machine" problem and is expected in most places now.
 Adds to the project: the whole site brought up with a single command.
 
-### 18. Continuous integration with GitHub Actions
+### 19. Continuous integration with GitHub Actions
 Everything running on every pull request: unit, API, end-to-end, the security baseline and a performance smoke check, with the request turning red when something breaks. The heavier security and load runs can sit on a nightly schedule rather than every push, which teaches the difference between fast feedback and thorough coverage.
 Adds to the project: the suite wired into CI, with a deliberate failure to confirm the signal.
 
@@ -91,4 +95,4 @@ Two questions the subject raises naturally, each a good lesson in its own right.
 
 ## Stack
 
-Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or MySQL, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, OWASP ZAP for security, Locust or k6 for performance, Docker, and GitHub Actions.
+Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or MySQL, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, OWASP ZAP for security, k6 for performance, Docker, and GitHub Actions.
