@@ -59,20 +59,28 @@ Adds to the project: each end-to-end test creating and cleaning up its own candi
 Bring axe checks into Playwright. Forms are exactly where accessibility matters, which ties this to the candidate form and to the European Accessibility Act.
 Adds to the project: an accessibility scan of the form, with fixes for what it finds.
 
-### 13. BDD and Gherkin
+### 13. Security testing
+The non-functional dimension that matters most given the data the site collects. The OWASP Top 10 applied to a system the learner owns: injection, broken authentication, input validation, and the file-upload attack surface that the CV question raises. The point is to test for what the application must refuse to do, not only what it should do. Tools such as OWASP ZAP for a baseline scan, alongside hand-written negative tests against the API.
+Adds to the project: negative and abuse-case tests against the form and the API, plus a baseline scan of the running site.
+
+### 14. Performance testing
+How the service behaves under load rather than whether it is correct. Latency, throughput and the difference between a single slow request and a system that degrades under concurrency. Load testing with Locust or k6 against the candidate submission endpoint, reading percentiles instead of averages and knowing what a meaningful threshold looks like.
+Adds to the project: a load test against the submission flow, with a baseline the suite can hold to.
+
+### 15. BDD and Gherkin
 Given/when/then and feature files, wired to pytest-bdd or Playwright. The point to land is that Gherkin exists to align understanding, not to decorate tests.
 Adds to the project: the candidate scenarios rewritten as executable Gherkin.
 
-### 14. ATDD
+### 16. ATDD
 More a practice and a mindset than a tool: the three amigos, and writing acceptance criteria before the code.
 Adds to the project: a new feature built acceptance-first.
 
-### 15. Docker
+### 17. Docker
 Running the application, the database and then the tests reproducibly. It settles the "works on my machine" problem and is expected in most places now.
 Adds to the project: the whole site brought up with a single command.
 
-### 16. Continuous integration with GitHub Actions
-Everything running on every pull request: unit, API and end-to-end, with the request turning red when something breaks.
+### 18. Continuous integration with GitHub Actions
+Everything running on every pull request: unit, API, end-to-end, the security baseline and a performance smoke check, with the request turning red when something breaks. The heavier security and load runs can sit on a nightly schedule rather than every push, which teaches the difference between fast feedback and thorough coverage.
 Adds to the project: the suite wired into CI, with a deliberate failure to confirm the signal.
 
 ## The final project
@@ -83,4 +91,4 @@ Two questions the subject raises naturally, each a good lesson in its own right.
 
 ## Stack
 
-Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or Postgres, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, Docker, and GitHub Actions.
+Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or Postgres, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, OWASP ZAP for security, Locust or k6 for performance, Docker, and GitHub Actions.
