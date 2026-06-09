@@ -110,3 +110,4 @@ Books that span the whole path rather than a single module (each module has its 
 - **Steve Freeman & Nat Pryce**, *Growing Object-Oriented Software, Guided by Tests* — the canonical treatment of test-first development and the acceptance-test architecture module 4 introduces.
 - **Kent Beck**, *Test-Driven Development by Example* — red-green-refactor from the source.
 - **Lisa Crispin & Janet Gregory**, *Agile Testing* — testing as a whole-team activity, with the testing quadrants.
+- **Gojko Adzic, David Evans & Tom Roden**, *Fifty Quick Ideas to Improve Your Tests* (2015) — short, practical ideas on what to test and how to keep a suite valuable. [fiftyquickideas.com](https://www.fiftyquickideas.com/)

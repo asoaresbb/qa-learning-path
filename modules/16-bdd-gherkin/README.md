@@ -28,3 +28,7 @@ Feature: Candidate application
 ## Solution
 
 See [`solution/`](solution).
+
+## References
+
+- **Gojko Adzic**, *Specification by Example* (2011) — how teams turn examples into executable specifications, the idea Gherkin exists to serve. [gojko.net](https://gojko.net/)
