@@ -35,7 +35,7 @@ A test-design technique turns "I'll try some values" into a defensible set. ISTQ
 
 - **Exploratory testing**: learning, designing and running tests at the same time, letting what you find steer what you try next. This is the "walk the flow and update your mental model" half of the exercise below.
 - **Error guessing**: deliberately aiming where defects hide — empty fields, zero, negatives, huge inputs, double submits, unexpected types.
-- **Ad-hoc**: unstructured poking. Useful for a quick look, but the least repeatable, so it earns the least trust as a check.
+- **Checklist-based testing**: work through a checklist of conditions to cover — the inputs, the error paths, the things easy to forget — designing a test for each. (Pure *ad-hoc* poking is the informal cousin; useful for a quick look, but not an ISTQB-named technique, and the least repeatable.)
 
 There is also a **structure-based (white-box)** view — statement and branch coverage — which measures how much of the code the tests exercise rather than choosing inputs; treat it as a gap-finder, not a goal. The specification-based techniques get applied for real in modules 10–15, structure-based coverage shows up with the unit tests in module 9, and the experience-based ones are a habit you carry through all of them.
 
