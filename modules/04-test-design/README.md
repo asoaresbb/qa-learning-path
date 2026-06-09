@@ -22,12 +22,22 @@ You cannot automate testing. You can automate checks — but only testing tells 
 
 ### Choosing cases, not guessing
 
-Two classic techniques turn "I'll try some values" into a defensible set:
+A test-design technique turns "I'll try some values" into a defensible set. ISTQB groups them, and the grouping maps neatly onto the testing/checking split above.
 
-- **Equivalence partitioning**: split the inputs into classes that should behave the same, and test one value from each. An age field might partition into *too young*, *valid*, *too old*, *non-numeric* — four cases instead of forty.
-- **Boundary values**: bugs cluster at the edges. If valid age is 18–99, test 17/18 and 99/100, not just 50.
+**Specification-based** (derived from what the system *should* do — these produce checks):
 
-These get applied for real in modules 10–15.
+- **Equivalence partitioning**: split the inputs into classes that should behave the same, and test one value from each. An age field partitions into *too young*, *valid*, *too old*, *non-numeric* — four cases instead of forty.
+- **Boundary value analysis**: bugs cluster at the edges. If valid age is 18–99, test 17/18 and 99/100, not just 50.
+- **Decision tables**: when the outcome depends on a *combination* of conditions, tabulate the combinations and their expected result, so you cover the interactions rather than each input alone (e.g. member × in-stock × coupon → which price).
+- **State transition**: when behaviour depends on what happened before, model the states and the moves between them — a cart goes *empty → has items → checked out → paid* — and test both the allowed transitions and the forbidden ones (can you pay an empty cart?).
+
+**Experience-based** (lean on the tester, not a spec — this is the *testing* half of Bolton and Bach's distinction):
+
+- **Exploratory testing**: learning, designing and running tests at the same time, letting what you find steer what you try next. This is the "walk the flow and update your mental model" half of the exercise below.
+- **Error guessing**: deliberately aiming where defects hide — empty fields, zero, negatives, huge inputs, double submits, unexpected types.
+- **Ad-hoc**: unstructured poking. Useful for a quick look, but the least repeatable, so it earns the least trust as a check.
+
+The specification-based techniques get applied for real in modules 10–15; the experience-based ones are a habit you carry through all of them.
 
 ### Intent over mechanics
 
