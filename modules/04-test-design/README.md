@@ -37,7 +37,18 @@ A test-design technique turns "I'll try some values" into a defensible set. ISTQ
 - **Error guessing**: deliberately aiming where defects hide — empty fields, zero, negatives, huge inputs, double submits, unexpected types.
 - **Ad-hoc**: unstructured poking. Useful for a quick look, but the least repeatable, so it earns the least trust as a check.
 
-The specification-based techniques get applied for real in modules 10–15; the experience-based ones are a habit you carry through all of them.
+There is also a **structure-based (white-box)** view — statement and branch coverage — which measures how much of the code the tests exercise rather than choosing inputs; treat it as a gap-finder, not a goal. The specification-based techniques get applied for real in modules 10–15, structure-based coverage shows up with the unit tests in module 9, and the experience-based ones are a habit you carry through all of them.
+
+### Levels: where you test
+
+Technique is one axis; **level** is the other, and they're independent — you can test black-box at any level. Levels say what *scope* you're checking:
+
+- **Unit / component** — one function in isolation (the service layer, module 9).
+- **Integration** — parts wired together: service ↔ database, API ↔ service (module 10).
+- **System** — the whole app end to end, through its real interface (Playwright, module 11).
+- **Acceptance** — does it meet the agreed criteria (BDD and ATDD, modules 16–17).
+
+The **test pyramid** is the rule of thumb across these: many fast unit and API checks at the base, few slow system checks at the top — the cheap ones catch most problems, the expensive ones only prove the pieces connect. The non-functional dimensions — accessibility, security, performance (modules 13–15) — cut across every level.
 
 ### Intent over mechanics
 
