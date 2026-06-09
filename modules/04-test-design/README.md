@@ -82,3 +82,11 @@ Take a real user intent — **placing an order**: add to cart, check out, pay, c
 The skill this builds: naming which half you're in — testing or checking — at any moment.
 
 A worked version in [`solution/`](solution) — do your own first; there's no single right answer, only defensible ones.
+
+## References
+
+- **Michael Bolton & James Bach**, *Testing and Checking Refined* (2013) — the testing/checking distinction. [developsense.com](https://www.developsense.com/blog/2013/09/testing-and-checking-refined/) · [Rapid Software Testing](https://rapid-software-testing.com/)
+- **ISTQB**, *Certified Tester Foundation Level Syllabus v4.0* — the test-technique families (black-box, white-box, experience-based) and levels. [istqb.org](https://istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/)
+- **Jez Humble & David Farley**, *Continuous Delivery* (2010) — the four-layer acceptance-test architecture (test → DSL → driver → system under test).
+- **Martin Fowler**, *PageObject* — the page object as a layer that hides UI mechanics behind intent. [martinfowler.com](https://martinfowler.com/bliki/PageObject.html)
+- **Martin Fowler**, *TestPyramid* — many fast low-level checks, few slow end-to-end ones. [martinfowler.com](https://martinfowler.com/bliki/TestPyramid.html)
