@@ -45,3 +45,4 @@ See [`solution/`](solution).
 
 - **Luís Soares**, *Guiding Principles for Refactoring* — moving logic into a clean layer without changing behaviour. [medium.com](https://medium.com/codex/guiding-principles-for-refactoring-668f13d06374)
 - **Luís Soares**, *Unit Testing: Values and Principles* — what makes a unit test on the new service layer worth keeping. [medium.com](https://medium.com/codex/unit-testing-values-and-principles-ae80d9210ca6)
+- **Jason Gorman (Codemanship)**, *Codemanship's TDD* — red-green-refactor and using tests as specifications; the full course book is free. [course](https://codemanship.co.uk/tdd.html) · [free PDF](https://codemanship.co.uk/tdd_jasongorman_codemanship.pdf)

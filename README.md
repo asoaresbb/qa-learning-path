@@ -101,3 +101,12 @@ Two questions the subject raises naturally, each a good lesson in its own right.
 ## Stack
 
 Linux and Bash, Git and GitHub, HTTP and TLS, Python with FastAPI, Jinja2, SQLite or MySQL, plain JavaScript with fetch, pytest with httpx, Playwright, pytest-bdd, axe for accessibility, OWASP ZAP for security, k6 for performance, Docker, and GitHub Actions.
+
+## Further reading
+
+Books that span the whole path rather than a single module (each module has its own focused references):
+
+- **Dan Olsen**, *The Lean Product Playbook* (2015) — building the right product: product-market fit and MVPs. The counterpart to this path, which is about building it well and knowing it works.
+- **Steve Freeman & Nat Pryce**, *Growing Object-Oriented Software, Guided by Tests* — the canonical treatment of test-first development and the acceptance-test architecture module 4 introduces.
+- **Kent Beck**, *Test-Driven Development by Example* — red-green-refactor from the source.
+- **Lisa Crispin & Janet Gregory**, *Agile Testing* — testing as a whole-team activity, with the testing quadrants.
