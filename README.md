@@ -9,6 +9,8 @@ The method matters as much as the topics. Rather than ten disconnected exercises
 
 Work through the modules in order; each one assumes the previous. Modules 1 to 4 are standalone exercises that build the foundation and the testing mindset. Modules 5 onward build the consultancy site one layer at a time, so by the end the final project is the finished accumulation, wired into continuous integration.
 
+This page is the map. The territory is in [`modules/`](modules): each module has its own folder with the theory, an exercise to attempt, and a gated solution to check against. The foundation drills (1–4) carry a complete reference solution; the app modules (5–19) grow the single application in [`app/`](app), with the repo tagged per module (`git checkout module-08`) so you can see the app at any stage. Clone it, try the exercises, then read the solutions.
+
 ## Learning path
 
 ### 1. Linux basics
