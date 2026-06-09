@@ -40,3 +40,8 @@ Behaviour must not change — this is a refactor. Lean on the tests if you have 
 ## Solution
 
 See [`solution/`](solution).
+
+## References
+
+- **Luís Soares**, *Guiding Principles for Refactoring* — moving logic into a clean layer without changing behaviour. [medium.com](https://medium.com/codex/guiding-principles-for-refactoring-668f13d06374)
+- **Luís Soares**, *Unit Testing: Values and Principles* — what makes a unit test on the new service layer worth keeping. [medium.com](https://medium.com/codex/unit-testing-values-and-principles-ae80d9210ca6)

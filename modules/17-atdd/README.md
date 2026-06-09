@@ -25,3 +25,7 @@ Notice what the conversation surfaced that you'd otherwise have built wrong.
 ## Solution
 
 See [`solution/`](solution).
+
+## References
+
+- **Luís Soares**, *Working backward* (begin with the end in mind) — agreeing the outcome and the acceptance test before writing the code. [medium.com](https://medium.com/codex/begin-with-the-end-in-mind-8d9ccc4ee4fe)

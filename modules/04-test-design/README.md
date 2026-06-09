@@ -90,3 +90,5 @@ A worked version in [`solution/`](solution) — do your own first; there's no si
 - **Jez Humble & David Farley**, *Continuous Delivery* (2010) — the four-layer acceptance-test architecture (test → DSL → driver → system under test).
 - **Martin Fowler**, *PageObject* — the page object as a layer that hides UI mechanics behind intent. [martinfowler.com](https://martinfowler.com/bliki/PageObject.html)
 - **Martin Fowler**, *TestPyramid* — many fast low-level checks, few slow end-to-end ones. [martinfowler.com](https://martinfowler.com/bliki/TestPyramid.html)
+- **Luís Soares**, *Defining a Testing Strategy* — choosing levels and coverage deliberately rather than by habit. [levelup.gitconnected.com](https://levelup.gitconnected.com/defining-a-testing-strategy-24f733d822df)
+- **Luís Soares**, *The Waterfall Assessment Test* — where testing sits in the process, and why late-only test phases fail. [levelup.gitconnected.com](https://levelup.gitconnected.com/the-waterfall-assessment-test-d22c6363d137)

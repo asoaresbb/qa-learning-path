@@ -34,3 +34,7 @@ graph LR
 ## Solution
 
 See [`solution/`](solution).
+
+## References
+
+- **David Farley**, *Continuous Delivery Pipelines* (2021) — how to design the pipeline that runs the suite on every change. [continuous-delivery.co.uk](https://www.continuous-delivery.co.uk/)
