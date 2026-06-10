@@ -14,8 +14,8 @@ This page is the map. The territory is in [`modules/`](modules): each module has
 ## Learning path
 
 ### 1. Linux basics
-The environment everything runs on. The shell, the filesystem, permissions, processes, pipes and redirection.
-Exercise: solve tasks entirely on the command line, then write a bash script that automates something repetitive.
+The environment everything runs on. The shell, the filesystem, pipes and redirection — and above all the two things a QA reaches for daily: navigating a machine and searching logs to triage a bug.
+Exercise: find your way around the command line, then triage real web and application logs — tracking a brute-force attempt and a failing checkout across both files, ending in a written bug report.
 
 ### 2. Git and GitHub
 Version control before there is any code worth keeping. Commits, branches, merges, conflicts, pull requests and review.
