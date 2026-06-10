@@ -94,7 +94,7 @@ Using `grep`, `tail`, `head` and pipes (`|`), work through these. Keep [`cheatsh
 6. Show only the non-`200` responses in `access.log`. (`grep -v`)
 7. Which user account got locked, and after how many attempts?
 
-Work through them first — running the commands and reading the output *is* the exercise. Then check your reasoning against the [worked solutions](solution.md) (Part 2 section).
+Work through them first — running the commands and reading the output *is* the exercise. Then check your reasoning against the [worked solutions](solution/README.md) (Part 2 section).
 
 ### Part 3 — run a real triage
 
@@ -124,7 +124,7 @@ Practise your redirection while you write it: `>` for the **first** line (create
 
 Confirming the story across *two* logs (the app error and the web 500s line up in time) is exactly how you turn "it's broken" into something a developer can act on.
 
-When you're done, compare your write-up with the [worked solutions](solution.md) (Part 3 section) — not to match it word for word, but to check you landed the same root cause and blast radius. Try the whole investigation yourself first.
+When you're done, compare your write-up with the [worked solutions](solution/README.md) (Part 3 section) — not to match it word for word, but to check you landed the same root cause and blast radius. Try the whole investigation yourself first.
 
 ### Part 4 — script the boring parts
 
@@ -157,6 +157,6 @@ prints, in one go, the summary you assembled by hand in Parts 2–3: the **total
 3. Guard the input — if the argument is missing or the file doesn't exist, print a message and `exit 1` rather than charging ahead on bad input.
 4. Fill in the rest of the report — total requests, non-`200`s, the `401` IP table — each line labelled so the output reads like something you'd paste into a ticket.
 
-Write it yourself first — the thinking is in choosing which Part 2 commands to reuse and assembling them, not in new commands. Then compare with the [worked solution](solution.md) (Part 4 section).
+Write it yourself first — the thinking is in choosing which Part 2 commands to reuse and assembling them, not in new commands. Then compare with the [worked solution](solution/README.md) (Part 4 section) — the runnable script is there too, as [`triage.sh`](solution/triage.sh).
 
 > The `exit 1` in step 3 is worth a pause. A script that exits non-zero on failure is exactly how an automated system knows a step passed or failed — you've just met, in one line, the mechanism that module 19 builds on to turn a pull request red.

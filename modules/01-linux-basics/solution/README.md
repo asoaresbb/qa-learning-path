@@ -1,6 +1,6 @@
 # Module 1 — worked solutions
 
-Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2**, **Part 3** and **Part 4** in the [module README](README.md), with sample logs in [`sample-logs/`](sample-logs). Run the commands from the `sample-logs/` folder.
+Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2**, **Part 3** and **Part 4** in the [module README](../README.md), with sample logs in [`sample-logs/`](../sample-logs). Run the commands from the `sample-logs/` folder.
 
 There's usually more than one correct command — what matters is reading the output correctly.
 
@@ -145,7 +145,7 @@ You started with a vague symptom ("checkout was failing") and ended with somethi
 
 ## Part 4 — the triage script
 
-The finished `triage.sh`, built up from the four steps. Yours doesn't need to match line for line — what matters is that it runs the Part 2–3 commands for you, takes the log as an argument, and refuses bad input cleanly.
+The finished `triage.sh`, built up from the four steps — and a runnable copy sits beside this file as [`triage.sh`](triage.sh), so you can diff yours against it or just run it: `./triage.sh ../sample-logs/access.log`. Yours doesn't need to match line for line — what matters is that it runs the Part 2–3 commands for you, takes the log as an argument, and refuses bad input cleanly.
 
 ```bash
 #!/bin/bash
@@ -166,7 +166,7 @@ fi
 
 echo "== Triage report for $log =="
 echo
-echo "Total requests:    $(wc -l < "$log")"
+echo "Total requests:    $(wc -l < "$log" | tr -d ' ')"
 echo "500 errors:        $(grep -c ' 500 ' "$log")"
 echo "Non-200 responses: $(grep -vc ' 200 ' "$log")"
 echo
@@ -200,7 +200,7 @@ Every number matches what you found by hand in Part 2 — the script just gather
 - **`$1`** — the first argument you type after the script name. Storing it in `log="$1"` once, then using `"$log"`, means you change the source in a single place.
 - **`$( ... )`** — *command substitution*. It runs the command inside and drops its output where it sits, so `$(grep -c ' 500 ' "$log")` becomes the number `3` before `echo` prints the line.
 - **`"$log"` in quotes** — protects you if a filename ever contains spaces. A habit worth forming early; it costs nothing and saves a baffling bug later.
-- **`wc -l < "$log"`** — feeding the file in with `<` makes `wc` print just the count, not the filename beside it.
+- **`wc -l < "$log" | tr -d ' '`** — feeding the file in with `<` makes `wc` print just the count, not the filename beside it; the `tr -d ' '` strips the leading spaces macOS's `wc` pads the number with, so the columns line up the same on macOS and Linux. (On Linux alone you wouldn't need it — a small taste of why "works on my machine" is a real problem.)
 - **the two guards** — `-z` tests for an empty string (you forgot the argument); `-f` tests that the path is a real file (you typo'd it). `exit 1` stops the script with a non-zero code, the universal shell signal for "this failed."
 
 ### Why this is the point
