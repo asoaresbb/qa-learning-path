@@ -1,6 +1,6 @@
 # Module 1 — worked solutions
 
-Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2** and **Part 3** in the [module README](README.md), with sample logs in [`exercise/`](exercise). Run the commands from the `exercise/` folder.
+Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2** and **Part 3** in the [module README](README.md), with sample logs in [`sample-logs/`](sample-logs). Run the commands from the `sample-logs/` folder.
 
 There's usually more than one correct command — what matters is reading the output correctly.
 

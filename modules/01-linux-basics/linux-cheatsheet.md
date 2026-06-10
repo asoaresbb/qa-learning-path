@@ -144,4 +144,4 @@ Writing the query is the easy part; knowing *what to look for* is the skill. A r
 
 ---
 
-This is a reference — keep it open while you work. The exercises that use it are **Part 2** and **Part 3** in the [module README](README.md), with sample logs in [`exercise/`](exercise) and worked answers in [`solution.md`](solution.md).
+This is a reference — keep it open while you work. The exercises that use it are **Part 2** and **Part 3** in the [module README](README.md), with sample logs in [`sample-logs/`](sample-logs) and worked answers in [`solution.md`](solution.md).
