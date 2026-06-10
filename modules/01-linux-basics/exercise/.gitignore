@@ -1,0 +1,3 @@
+# Sample logs are exercise fixtures — keep them despite the root *.log ignore
+!access.log
+!app.log

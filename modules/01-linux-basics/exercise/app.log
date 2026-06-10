@@ -1,0 +1,25 @@
+2026-06-10 08:12:01 INFO  [http-nio-8080] AuthService - user u-1042 login attempt
+2026-06-10 08:12:07 INFO  [http-nio-8080] AuthService - user u-1042 login success
+2026-06-10 08:13:11 INFO  [http-nio-8080] CatalogService - listing products page=1
+2026-06-10 08:13:12 DEBUG [http-nio-8080] CatalogService - cache hit for product 4821
+2026-06-10 08:14:33 WARN  [http-nio-8080] AuthService - user u-9999 login failed: bad credentials
+2026-06-10 08:14:35 WARN  [http-nio-8080] AuthService - user u-9999 login failed: bad credentials
+2026-06-10 08:14:38 WARN  [http-nio-8080] AuthService - user u-9999 login failed: bad credentials
+2026-06-10 08:14:39 ERROR [http-nio-8080] AuthService - account u-9999 locked after 3 failed attempts
+2026-06-10 08:15:02 INFO  [http-nio-8080] OrderService - fetched order 9001 for user u-1042
+2026-06-10 08:16:10 WARN  [http-nio-8080] CatalogService - product 9999 not found
+2026-06-10 08:17:21 ERROR [http-nio-8080] CheckoutService - payment gateway timeout after 30000ms
+2026-06-10 08:17:21 ERROR [http-nio-8080] CheckoutService - order creation failed for user u-1055
+2026-06-10 08:17:25 ERROR [http-nio-8080] CheckoutService - payment gateway timeout after 30000ms
+2026-06-10 08:18:03 INFO  [http-nio-8080] AuthService - user u-1042 logout
+2026-06-10 08:19:40 DEBUG [http-nio-8080] HealthController - readiness probe ok
+2026-06-10 08:20:15 WARN  [http-nio-8080] AuthService - user u-2088 login failed: bad credentials
+2026-06-10 08:20:18 INFO  [http-nio-8080] AuthService - user u-2088 login success
+2026-06-10 08:22:30 INFO  [http-nio-8080] OrderService - listing orders for user u-1041
+2026-06-10 08:22:33 WARN  [http-nio-8080] OrderService - order 4821 not found for user u-1041
+2026-06-10 08:23:50 ERROR [http-nio-8080] CheckoutService - payment gateway timeout after 30000ms
+2026-06-10 08:23:51 ERROR [http-nio-8080] CheckoutService - order creation failed for user u-1055
+2026-06-10 08:24:40 DEBUG [http-nio-8080] HealthController - readiness probe ok
+2026-06-10 08:25:11 INFO  [http-nio-8080] DashboardService - rendered dashboard for user u-1042
+2026-06-10 08:26:00 ERROR [scheduler-1] ReportJob - nightly report failed: connection refused
+2026-06-10 08:26:00 INFO  [scheduler-1] ReportJob - retry scheduled in 60s
