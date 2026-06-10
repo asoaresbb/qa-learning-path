@@ -74,7 +74,7 @@ Take a real user intent — **placing an order**: add to cart, check out, pay, c
 
 1. **Test it first.** Walk the flow as if you'd never seen it. Each time it surprises you, write down what could go wrong and what actually matters. This is the exploring that keeps changing your mental model — and you can't script it in advance.
 2. **Then design the checks.** Decide:
-   - Should *one* automated test drive the whole flow end to end, or should each step earn its own check? What does each choice cost, and what does it buy in confidence?
+   - Should *one* automated check drive the whole flow end to end, or should each step earn its own? What does each choice cost, and what does it buy in confidence?
    - Where along the way are the inputs — quantity, address, payment — worth **partitioning** and **bounding**? Write those cases out.
    - Which checks would you actually keep, given they have to run on every change and not turn flaky?
 3. For one step, write the **intent** in plain words and, separately, the **mechanics** it would need. See where the line falls.

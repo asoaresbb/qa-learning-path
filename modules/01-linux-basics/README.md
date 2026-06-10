@@ -130,7 +130,7 @@ When you're done, compare your write-up with the [worked solutions](solution.md)
 
 You just ran the same handful of commands by hand to triage that checkout failure. Do it twice and you'll feel it: the counts, the top-IPs pipeline, the `grep` for errors — the same keystrokes every time a log lands on your desk. That's the signal to **script it**. A script is nothing more than the commands you already know, saved in a file so the machine repeats them for you.
 
-This is a real QA instinct, not a detour: the moment you notice you're repeating yourself, you automate the repetition so your attention is free for the judgement — the same reflex that later becomes "automate the regression checks, explore by hand."
+This is a real tester's instinct, not a detour: the moment you notice you're repeating yourself, you capture the repetition in a check so your attention is free for the judgement — the same reflex that later becomes "automate the checks, explore by hand."
 
 > **On Windows?** A `.sh` script needs a real `bash` to run it — use **WSL** or **Git Bash** (both from the Windows note at the top of the exercise). Plain PowerShell can't run a `.sh` file at all, so don't attempt this part there.
 
