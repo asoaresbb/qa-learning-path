@@ -1,0 +1,9 @@
+# Owner-only guardrail (learners clone and never push, so this is just for me).
+# This is the exercise working folder: only the .log fixtures belong in the repo.
+# Everything I create while practising here — my own triage.sh, scratch .txt,
+# anything — stays local. So ignore it all, then re-include the two fixtures
+# (the root .gitignore's *.log rule would otherwise exclude them).
+*
+!.gitignore
+!access.log
+!app.log

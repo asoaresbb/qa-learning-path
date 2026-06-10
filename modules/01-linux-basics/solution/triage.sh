@@ -3,7 +3,7 @@
 # usage: ./triage.sh <access.log>
 #
 # Reference solution for Part 4. Run it against the sample log:
-#   ./triage.sh ../sample-logs/access.log
+#   ./triage.sh ../exercise/access.log
 
 log="$1"
 

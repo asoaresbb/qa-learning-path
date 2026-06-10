@@ -1,6 +1,6 @@
 # Module 1 — worked solutions
 
-Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2**, **Part 3** and **Part 4** in the [module README](../README.md), with sample logs in [`sample-logs/`](../sample-logs). Run the commands from the `sample-logs/` folder.
+Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2**, **Part 3** and **Part 4** in the [module README](../README.md), with sample logs in [`exercise/`](../exercise). Run the commands from the `exercise/` folder.
 
 There's usually more than one correct command — what matters is reading the output correctly.
 
@@ -145,7 +145,7 @@ You started with a vague symptom ("checkout was failing") and ended with somethi
 
 ## Part 4 — the triage script
 
-The finished `triage.sh`, built up from the four steps — and a runnable copy sits beside this file as [`triage.sh`](triage.sh), so you can diff yours against it or just run it: `./triage.sh ../sample-logs/access.log`. Yours doesn't need to match line for line — what matters is that it runs the Part 2–3 commands for you, takes the log as an argument, and refuses bad input cleanly.
+The finished `triage.sh`, built up from the four steps — and a runnable copy sits beside this file as [`triage.sh`](triage.sh), so you can diff yours against it or just run it: `./triage.sh ../exercise/access.log`. Yours doesn't need to match line for line — what matters is that it runs the Part 2–3 commands for you, takes the log as an argument, and refuses bad input cleanly.
 
 ```bash
 #!/bin/bash

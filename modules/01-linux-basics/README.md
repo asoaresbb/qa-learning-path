@@ -16,11 +16,11 @@ The mindset to take away: the command line is not a worse GUI — it's where sma
 
 ## Exercise
 
-> **New to the terminal?** On macOS, open **Terminal** (press `Cmd+Space`, type "Terminal", hit Enter). On Linux, open your terminal app. First move into the folder where you cloned this repo, then into this module's `sample-logs` folder:
+> **New to the terminal?** On macOS, open **Terminal** (press `Cmd+Space`, type "Terminal", hit Enter). On Linux, open your terminal app. First move into the folder where you cloned this repo, then into this module's `exercise` folder:
 >
 > ```bash
 > cd path/to/quality-engineering-path          # wherever you cloned it
-> cd modules/01-linux-basics/sample-logs
+> cd modules/01-linux-basics/exercise
 > ```
 >
 > Run `pwd` to confirm where you are and `ls` to see the two sample logs.
@@ -72,17 +72,17 @@ cat found.txt             # ...because it went into the file. read it back
 
 That last step is the key idea: `>` sends output **into a file instead of the screen**. That's why nothing printed — `cat` shows you where it went.
 
-When you're done, step out of the scratch folder and delete it, then head into the `sample-logs` folder for Part 2:
+When you're done, step out of the scratch folder and delete it, then head into the `exercise` folder for Part 2:
 
 ```bash
 cd ~                                 # leave the folder before deleting it
 rm -rf ~/linux-practice              # delete the whole scratch folder
-cd path/to/quality-engineering-path/modules/01-linux-basics/sample-logs   # where you cloned the repo
+cd path/to/quality-engineering-path/modules/01-linux-basics/exercise   # where you cloned the repo
 ```
 
 ### Part 2 — log triage (a core testing skill)
 
-You should be in the `sample-logs` folder now (Part 1 left you here). Run `ls` — you'll see a web `access.log` and an application `app.log`. They share the same timeline, so you can pivot between them like in a real investigation. This is the part to actually drill — it's the skill you'll use on the job.
+You should be in the `exercise` folder now (Part 1 left you here). Run `ls` — you'll see a web `access.log` and an application `app.log`. They share the same timeline, so you can pivot between them like in a real investigation. This is the part to actually drill — it's the skill you'll use on the job.
 
 Using `grep`, `tail`, `head` and pipes (`|`), work through these. Keep [`cheatsheet.md`](cheatsheet.md) open beside you as a command reference.
 
@@ -98,7 +98,7 @@ Work through them first — running the commands and reading the output *is* the
 
 ### Part 3 — run a real triage
 
-This is the whole job in miniature: a symptom comes in, you find the evidence, and you write it up. Still in the `sample-logs` folder, with both `access.log` and `app.log`.
+This is the whole job in miniature: a symptom comes in, you find the evidence, and you write it up. Still in the `exercise` folder, with both `access.log` and `app.log`.
 
 > **Bug report:** *"A user says checkout was failing this morning, around 08:17. Can you look into it?"*
 
@@ -150,7 +150,7 @@ prints, in one go, the summary you assembled by hand in Parts 2–3: the **total
 - `$(command)` — *command substitution*: runs the command and drops its output in place, so `echo "500s: $(grep -c ' 500 ' "$log")"` prints the count on a labelled line.
 - `if [ ! -f "$log" ]; then ... fi` — a test; `-f` asks "is this a real file?". Use it to stop early on a missing or mistyped name.
 
-**Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `sample-logs` folder so the script has the logs beside it.
+**Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `exercise` folder so the script has the logs beside it — then `./triage.sh access.log` just works, no `../` needed.
 
 1. Make `triage.sh` run just *one* of your Part 2 commands — start with the `500` count. Add the shebang, `chmod +x` it, run it. (You've now proved a script is only commands in a file.)
 2. Stop hardcoding `access.log`: take the log as `$1` instead, so you can point the script at any file.
