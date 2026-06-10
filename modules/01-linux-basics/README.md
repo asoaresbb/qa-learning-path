@@ -109,17 +109,17 @@ Investigate using only the command line. Work out, with a command and its output
 3. **Root cause** — read the `app.log` error lines: *why* did checkout fail? (It's not the app's own bug.)
 4. **Blast radius** — how many times did it happen, and did it hit more than one user? (`grep -c`, and look at the user IDs.)
 
-Then write a short bug report — the deliverable a QA actually hands over:
+Then write a short bug report — the deliverable a QA actually hands over. Cover four things in your own words and numbers: **what** broke, **when**, the **root cause**, and the **impact** (how many, who). A template to fill in:
 
 ```text
-Title:    Checkout fails with 500 during payment
-When:     2026-06-10, ~08:17–08:24
-Evidence: app.log — "payment gateway timeout after 30000ms" (CheckoutService)
-          access.log — GET /checkout → 500 (x N)
-Cause:    Payment gateway timing out; order creation then fails.
-Impact:   N failed checkouts, user(s) u-1055
+Title:    <one-line summary of what's broken>
+When:     <the time window you found>
+Cause:    <root cause — and why; name the dependency>
+Impact:   <how many failures, which user(s)>
 ```
 
-Fill in the real numbers from your own commands — don't copy the template blindly. Confirming the story across *two* logs (the app error and the web 500s line up in time) is exactly how you turn "it's broken" into something a developer can act on.
+Practise your redirection while you write it: `>` for the **first** line (creates the file), `>>` for **every line after** (appends). Get them the wrong way round and `>` wipes what you've written — the Part 1 lesson, now with something real at stake. The shape is `echo "..." >> file`; the findings are yours to fill in. Read it back with `cat` when you're done. (Name the file whatever you like — `.txt` files here are git-ignored, so it's just scratch.)
 
-A worked write-up lives in [`solution/`](solution) — try the whole investigation yourself first.
+Confirming the story across *two* logs (the app error and the web 500s line up in time) is exactly how you turn "it's broken" into something a developer can act on.
+
+When you're done, compare your write-up with [`solution/checkout-investigation.md`](solution/checkout-investigation.md) — not to match it word for word, but to check you landed the same root cause and blast radius. Try the whole investigation yourself first.
