@@ -51,14 +51,16 @@ Three failed `500` responses, all from IP `192.168.1.33`, and the order-creation
 
 ```text
 Title:    Checkout fails with 500 during payment
-When:     2026-06-10, 08:17–08:24
+When:     2026-06-10, 08:17-08:23 (two waves)
 Evidence: app.log — "payment gateway timeout after 30000ms" (CheckoutService), x3
           access.log — GET /checkout -> 500, x3 (IP 192.168.1.33)
-Cause:    Payment gateway timing out after 30s; order creation then fails.
-          Not a defect in checkout itself — downstream dependency.
+Cause:    Payment gateway timeout (30s); order creation then fails.
+          Not a checkout defect — a downstream dependency.
 Impact:   3 failed checkout attempts, user u-1055.
 Severity: High — users cannot complete purchases.
 ```
+
+Same six fields as the template in Part 3 — each line traceable to a command you ran above.
 
 ## Why this is the whole job
 

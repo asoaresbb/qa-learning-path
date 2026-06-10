@@ -109,13 +109,15 @@ Investigate using only the command line. Work out, with a command and its output
 3. **Root cause** — read the `app.log` error lines: *why* did checkout fail? (It's not the app's own bug.)
 4. **Blast radius** — how many times did it happen, and did it hit more than one user? (`grep -c`, and look at the user IDs.)
 
-Then write a short bug report — the deliverable a QA actually hands over. Cover four things in your own words and numbers: **what** broke, **when**, the **root cause**, and the **impact** (how many, who). A template to fill in:
+Then write a short bug report — the deliverable a QA actually hands over. Fill in each field in your own words and numbers:
 
 ```text
 Title:    <one-line summary of what's broken>
 When:     <the time window you found>
+Evidence: <the key log lines — the app error + the matching web 500s>
 Cause:    <root cause — and why; name the dependency>
 Impact:   <how many failures, which user(s)>
+Severity: <how bad — can users still use the product?>
 ```
 
 Practise your redirection while you write it: `>` for the **first** line (creates the file), `>>` for **every line after** (appends). Get them the wrong way round and `>` wipes what you've written — the Part 1 lesson, now with something real at stake. The shape is `echo "..." >> file`; the findings are yours to fill in. Read it back with `cat` when you're done. (Name the file whatever you like — `.txt` files here are git-ignored, so it's just scratch.)
