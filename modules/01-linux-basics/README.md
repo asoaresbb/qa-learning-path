@@ -147,7 +147,7 @@ prints, in one go, the summary you assembled by hand in Parts 2–3: the **total
 - `#!/bin/bash` as the **first line** — the *shebang*; it tells the system to run the file with `bash`.
 - `chmod +x triage.sh` makes the file executable (the `x` you saw in `ls -l`); then run it with `./triage.sh` — the `./` means "the script right here in this folder".
 - `"$1"` — inside the script, the **first argument** you typed after its name. Store it once (`log="$1"`) and reuse `"$log"` — in quotes — everywhere after.
-- `$(command)` — *command substitution*: runs the command and drops its output in place, so `echo "500s: $(grep -c ' 500 ' "$log")"` prints the count on a labelled line.
+- `$(command)` — *command substitution*: runs the command and drops its output in place, so `echo "label: $(some-command "$log")"` prints the command's result on a labelled line.
 - `if [ ! -f "$log" ]; then ... fi` — a test; `-f` asks "is this a real file?". Use it to stop early on a missing or mistyped name.
 
 **Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `exercise` folder so the script has the logs beside it — then `./triage.sh access.log` just works, no `../` needed.
