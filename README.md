@@ -2,7 +2,7 @@
 
 > Building and Testing a Web App, One Layer at a Time
 
-A learning path for someone entering quality engineering who wants to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
+A learning path for anyone working toward software quality — testers, QA and quality engineers, and developers who want to test what they build — to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
 
 The method matters as much as the topics. Rather than ten disconnected exercises, the work is organised around a single application that grows with each module. The foundations are short drills. From the server module onward, every topic adds a layer to the same project, so the learner sees how the pieces connect instead of meeting them in isolation. The end result is a consultancy website where a candidate submits their details through a form and those details persist in a database, with a complete test suite running automatically on every change.
 
