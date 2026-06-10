@@ -34,7 +34,7 @@ The goal here isn't to memorise commands — it's to *see* what each one does. T
 - **Run `ls` (or `ls -la`) after every change** so you watch the folder before and after. The output is the feedback loop.
 - **Open the same folder in your file manager** (Finder on macOS, File Explorer on Windows, Files on Linux) and keep it visible. As you type commands, watch folders and files appear, move, and disappear in the window. The terminal and the GUI are two views of the *same* filesystem.
 
-Not sure what a command or flag means? Look it up in [`log-triage-cheatsheet.md`](log-triage-cheatsheet.md) as you go.
+Not sure what a command or flag means? Look it up in [`linux-cheatsheet.md`](linux-cheatsheet.md) as you go.
 
 These steps create their own files, so nothing needs to exist beforehand. Work in a throwaway folder so you don't clutter the repo — create it and move in first:
 
@@ -84,7 +84,7 @@ cd path/to/qa-learning-path/modules/01-linux-basics/exercise   # where you clone
 
 You should be in the exercise folder now (Part 1 left you here). Run `ls` — you'll see a web `access.log` and an application `app.log`. They share the same timeline, so you can pivot between them like in a real investigation. This is the part to actually drill — it's the skill you'll use on the job.
 
-Using `grep`, `tail`, `head` and pipes (`|`), work through these. Keep [`log-triage-cheatsheet.md`](log-triage-cheatsheet.md) open beside you as a command reference.
+Using `grep`, `tail`, `head` and pipes (`|`), work through these. Keep [`linux-cheatsheet.md`](linux-cheatsheet.md) open beside you as a command reference.
 
 1. How many requests in `access.log` returned a `500`? (`grep -c`)
 2. Show the last 5 failed logins from `app.log`. (`grep ... | tail`)
