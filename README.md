@@ -1,7 +1,6 @@
-[README.md](https://github.com/user-attachments/files/28723021/README.md)
-# Software Testing Foundations: Building and Testing a Web App from the Ground Up
+# QA Foundations: Building and Testing a Web App from the Ground Up
 
-A learning path for someone entering software testing who wants to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
+A learning path for someone entering QA who wants to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
 
 The method matters as much as the topics. Rather than ten disconnected exercises, the work is organised around a single application that grows with each module. The foundations are short drills. From the server module onward, every topic adds a layer to the same project, so the learner sees how the pieces connect instead of meeting them in isolation. The end result is a consultancy website where a candidate submits their details through a form and those details persist in a database, with a complete test suite running automatically on every change.
 
