@@ -132,49 +132,31 @@ You just ran the same handful of commands by hand to triage that checkout failur
 
 This is a real tester's instinct, not a detour: the moment you notice you're repeating yourself, you capture the repetition in a check so your attention is free for the judgement — the same reflex that later becomes "automate the checks, explore by hand."
 
-> **On Windows?** A `.sh` script needs a real `bash` to run it — use **WSL** or **Git Bash** (both from the Windows note at the top of the exercise). Plain PowerShell can't run a `.sh` file at all, so don't attempt this part there.
+> **On Windows?** A `.sh` script needs a real `bash` to run it — use **WSL** or **Git Bash** (both from the Windows note at the top of the exercise). Plain PowerShell can't run a `.sh` file at all, so don't attempt this part there. macOS and Linux run it as-is in their own terminal.
 
-Build it up one step at a time, running it after each — the same before/after habit as Part 1. Work in the `sample-logs` folder so the script has the logs beside it.
-
-**1. A script is just commands in a file.** Put one of your Part 2 commands in a file called `triage.sh`:
+**The task.** Write a script, `triage.sh`, that takes a log file as its argument so that:
 
 ```bash
-#!/bin/bash
-echo "500 errors:"
-grep -c ' 500 ' access.log
+./triage.sh access.log
 ```
 
-The first line — the **shebang** — tells the system to run the file with `bash`. Make it executable, then run it:
+prints, in one go, the summary you assembled by hand in Parts 2–3: the **total number of requests**, the count of **`500`s**, the count of **non-`200`** responses, and the **table of IPs** failing `POST /login` with `401`s. Every command you need you already wrote in Part 2 — the new skill is wrapping them in a runnable file.
 
-```bash
-chmod +x triage.sh        # give the file permission to run (the 'x' you see in ls -l)
-./triage.sh               # run it — ./ means "the script here in this folder"
-```
+**New pieces you'll need** — the only things Part 4 adds; look them up here as you go, the way you used `cheatsheet.md` for Part 2:
 
-**2. Stop hardcoding the filename.** Right now it only ever reads `access.log`. Make it take the log as an argument so you can point it at any file. `$1` is the first thing you type after the script name:
+- `#!/bin/bash` as the **first line** — the *shebang*; it tells the system to run the file with `bash`.
+- `chmod +x triage.sh` makes the file executable (the `x` you saw in `ls -l`); then run it with `./triage.sh` — the `./` means "the script right here in this folder".
+- `"$1"` — inside the script, the **first argument** you typed after its name. Store it once (`log="$1"`) and reuse `"$log"` — in quotes — everywhere after.
+- `$(command)` — *command substitution*: runs the command and drops its output in place, so `echo "500s: $(grep -c ' 500 ' "$log")"` prints the count on a labelled line.
+- `if [ ! -f "$log" ]; then ... fi` — a test; `-f` asks "is this a real file?". Use it to stop early on a missing or mistyped name.
 
-```bash
-#!/bin/bash
-log="$1"
-echo "500 errors in $log:"
-grep -c ' 500 ' "$log"
-```
+**Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `sample-logs` folder so the script has the logs beside it.
 
-```bash
-./triage.sh access.log    # now $log is "access.log"
-```
+1. Make `triage.sh` run just *one* of your Part 2 commands — start with the `500` count. Add the shebang, `chmod +x` it, run it. (You've now proved a script is only commands in a file.)
+2. Stop hardcoding `access.log`: take the log as `$1` instead, so you can point the script at any file.
+3. Guard the input — if the argument is missing or the file doesn't exist, print a message and `exit 1` rather than charging ahead on bad input.
+4. Fill in the rest of the report — total requests, non-`200`s, the `401` IP table — each line labelled so the output reads like something you'd paste into a ticket.
 
-**3. Guard against mistakes.** What if you forget the argument, or typo the filename? A tool that charges ahead on bad input isn't much of a tool. Check before you work:
-
-```bash
-if [ ! -f "$log" ]; then
-  echo "file not found: $log"
-  exit 1                  # stop, with a non-zero code meaning "something went wrong"
-fi
-```
-
-**4. Make it a real report.** Now fold in the rest of the summary you built by hand in Parts 2–3 — total requests, non-`200`s, and the brute-force IP table — each line labelled so the output reads like something you'd paste into a ticket.
-
-Your goal: running `./triage.sh access.log` should print, in one go, the answers you previously assembled across half a dozen separate commands. Write it yourself first, then compare with the [worked solution](solution.md) (Part 4 section).
+Write it yourself first — the thinking is in choosing which Part 2 commands to reuse and assembling them, not in new commands. Then compare with the [worked solution](solution.md) (Part 4 section).
 
 > The `exit 1` in step 3 is worth a pause. A script that exits non-zero on failure is exactly how an automated system knows a step passed or failed — you've just met, in one line, the mechanism that module 19 builds on to turn a pull request red.
