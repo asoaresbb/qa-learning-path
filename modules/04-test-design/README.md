@@ -1,4 +1,4 @@
-# Module 4 — QA fundamentals and test design
+# Module 4 — Testing fundamentals and test design
 
 > The mental frame before the tools: how to think about a test.
 

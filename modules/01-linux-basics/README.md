@@ -10,7 +10,7 @@ Everything later in this path runs on a Unix-like machine: the server, the datab
 - **The filesystem** is a single tree rooted at `/`. Paths are absolute (`/home/you/file`) or relative to where you are (`./file`, `../sibling`). `pwd`, `cd`, `ls`, `cat`, `mkdir`, `rm`, `cp`, `mv` are the daily verbs.
 - **Pipes and redirection** connect programs: `|` feeds one program's output into the next, `>` writes output to a file, `>>` appends, `<` reads from a file. This is the idea that makes the shell composable — small tools chained into bigger ones (`cat log | grep ERROR | wc -l`).
 
-You'll also meet **permissions** (who can read/run a file — `chmod`, and the `rwx` columns in `ls -l`) and **processes** (running programs — `ps`, `kill`) as you go, but this module focuses on the two things a QA reaches for daily: navigation and search.
+You'll also meet **permissions** (who can read/run a file — `chmod`, and the `rwx` columns in `ls -l`) and **processes** (running programs — `ps`, `kill`) as you go, but this module focuses on the two things a tester reaches for daily: navigation and search.
 
 The mindset to take away: the command line is not a worse GUI — it's where small, composable tools (`grep`, `tail`, pipes) let you ask a system precise questions and get exact answers.
 
@@ -80,7 +80,7 @@ rm -rf ~/linux-practice              # delete the whole scratch folder
 cd path/to/qa-learning-path/modules/01-linux-basics/sample-logs   # where you cloned the repo
 ```
 
-### Part 2 — log triage (the QA core skill)
+### Part 2 — log triage (a core testing skill)
 
 You should be in the `sample-logs` folder now (Part 1 left you here). Run `ls` — you'll see a web `access.log` and an application `app.log`. They share the same timeline, so you can pivot between them like in a real investigation. This is the part to actually drill — it's the skill you'll use on the job.
 
@@ -109,7 +109,7 @@ Investigate using only the command line. Work out, with a command and its output
 3. **Root cause** — read the `app.log` error lines: *why* did checkout fail? (It's not the app's own bug.)
 4. **Blast radius** — how many times did it happen, and did it hit more than one user? (`grep -c`, and look at the user IDs.)
 
-Then write a short bug report — the deliverable a QA actually hands over. Fill in each field in your own words and numbers:
+Then write a short bug report — the deliverable a tester actually hands over. Fill in each field in your own words and numbers:
 
 ```text
 Title:    <one-line summary of what's broken>

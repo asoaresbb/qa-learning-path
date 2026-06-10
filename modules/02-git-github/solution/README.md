@@ -52,4 +52,4 @@ git commit            # completes the merge
 
 On a PR, use **Files changed → review changes**: leave a line comment, choose *Request changes*, push a fix on the branch (the PR updates itself), then *Approve* and merge.
 
-The lesson: reviewing is checking intent against implementation — exactly the QA habit the rest of the path builds on.
+The lesson: reviewing is checking intent against implementation — exactly the testing habit the rest of the path builds on.

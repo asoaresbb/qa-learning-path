@@ -1,7 +1,7 @@
 [README.md](https://github.com/user-attachments/files/28723021/README.md)
-# QA Foundations: Building and Testing a Web App from the Ground Up
+# Software Testing Foundations: Building and Testing a Web App from the Ground Up
 
-A learning path for someone entering QA who wants to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
+A learning path for someone entering software testing who wants to understand how systems talk to each other and how to automate testing across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
 
 The method matters as much as the topics. Rather than ten disconnected exercises, the work is organised around a single application that grows with each module. The foundations are short drills. From the server module onward, every topic adds a layer to the same project, so the learner sees how the pieces connect instead of meeting them in isolation. The end result is a consultancy website where a candidate submits their details through a form and those details persist in a database, with a complete test suite running automatically on every change.
 
@@ -14,7 +14,7 @@ This page is the map. The territory is in [`modules/`](modules): each module has
 ## Learning path
 
 ### 1. Linux basics
-The environment everything runs on. The shell, the filesystem, pipes and redirection — and above all the two things a QA reaches for daily: navigating a machine and searching logs to triage a bug.
+The environment everything runs on. The shell, the filesystem, pipes and redirection — and above all the two things a tester reaches for daily: navigating a machine and searching logs to triage a bug.
 Exercise: find your way around the command line, then triage real web and application logs — tracking a brute-force attempt and a failing checkout across both files, ending in a written bug report.
 
 ### 2. Git and GitHub
@@ -25,7 +25,7 @@ Exercise: contribute to a repository, open a pull request, and review someone el
 How the web actually works: TCP/IP, DNS, ports, and the HTTP request-response cycle with its methods, status codes and headers. This is also where TLS and HTTPS belong, at a level that explains why port 443 matters, what the handshake does, and what a certificate is for.
 Exercise: inspect real traffic with curl and the browser's Network tab, reading what comes back.
 
-### 4. QA fundamentals and test design
+### 4. Testing fundamentals and test design
 The mental frame before the tools: how to think about a test, so that the automation built later has something to stand on. The distinction between testing and checking — Michael Bolton and James Bach's, from Rapid Software Testing — the place of risk and oracles, and the test-design techniques that turn guessing into choosing, specification-based and experience-based alike — knowing what is worth checking before automating anything.
 
 One idea runs through everything that follows and is worth planting here: a test should say *what* it verifies, not *how* it drives the system. "A candidate submits valid details and is accepted" is the intent; the clicking, posting and waiting are mechanics that belong underneath it, out of sight. Hold the two apart and a test reads as a specification of behaviour rather than a script that happens to pass — and the suite survives a change in the UI or the wiring beneath it. This is the same principle whether the test talks to a browser or to an API, and it is what the Page Object Model in module 11 and the API suite in module 10 are built to express. The point now is only to recognise the seam between intent and mechanics, before any framework hides it.

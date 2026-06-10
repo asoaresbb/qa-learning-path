@@ -32,7 +32,7 @@ So a module's "solution" is two things: the notes and tests in its `solution/` f
 | 1 | [Linux basics](01-linux-basics) | foundation |
 | 2 | [Git and GitHub](02-git-github) | foundation |
 | 3 | [Networking and HTTP](03-networking-http) | foundation |
-| 4 | [QA fundamentals and test design](04-test-design) | foundation |
+| 4 | [Testing fundamentals and test design](04-test-design) | foundation |
 | 5 | [A server in Python](05-python-server) | the app begins |
 | 6 | [SQL and the database](06-sql-database) | persistence |
 | 7 | [Authentication and sessions](07-auth-sessions) | protected admin view |

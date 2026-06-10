@@ -1,6 +1,6 @@
 # Linux cheat sheet — navigation & log triage
 
-The part of the command line you actually reach for when working with a real system: **finding your way around a machine** and **searching text/logs to triage a problem**. It's not QA-specific — a developer debugging an incident, an ops engineer, anyone who reads logs uses exactly these. But it's core fluency for a tester or QA engineer: you rarely *write* shell scripts, you *operate* through the shell and read what happened.
+The part of the command line you actually reach for when working with a real system: **finding your way around a machine** and **searching text/logs to triage a problem**. It's not testing-specific — a developer debugging an incident, an ops engineer, anyone who reads logs uses exactly these. But it's core fluency for a tester: you rarely *write* shell scripts, you *operate* through the shell and read what happened.
 
 ## Navigation & files
 

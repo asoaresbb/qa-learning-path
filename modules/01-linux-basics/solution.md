@@ -139,4 +139,4 @@ Same six fields as the template in Part 3 — each line traceable to a command y
 
 ### Why this is the whole job
 
-You started with a vague symptom ("checkout was failing") and ended with something a developer can act on: a time window, the exact error, the root cause, and the blast radius — each backed by a command and its output. Correlating the *app* error with the *web* 500s across two logs is what turns "it's broken" into evidence. That's QA triage.
+You started with a vague symptom ("checkout was failing") and ended with something a developer can act on: a time window, the exact error, the root cause, and the blast radius — each backed by a command and its output. Correlating the *app* error with the *web* 500s across two logs is what turns "it's broken" into evidence. That's testing — investigation that produces information someone can act on.

@@ -10,7 +10,7 @@ Git records the history of a project as a chain of **commits** — snapshots, ea
 - **Branches**: a branch is a movable pointer to a commit. Work happens on a branch off `main`; `git switch -c feature` creates one. Branching is cheap — use it freely.
 - **Merges and conflicts**: bringing a branch back into `main` with `git merge`. When two branches change the same lines, Git stops and asks you to resolve the **conflict** by hand.
 - **Pull requests**: on GitHub, a PR proposes merging a branch and opens it for review. This is where the social half of version control lives.
-- **Review**: reading someone else's change, asking questions, requesting changes. Reviewing well is a QA skill in itself — you are checking intent against implementation.
+- **Review**: reading someone else's change, asking questions, requesting changes. Reviewing well is a testing skill in itself — you are checking intent against implementation.
 
 The remote (`origin`) is the shared copy on GitHub. `git push` sends your commits up, `git pull` brings others' down, `git clone` makes the first local copy.
 
