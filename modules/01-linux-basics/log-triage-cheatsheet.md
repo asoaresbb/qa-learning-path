@@ -61,8 +61,8 @@ A common mix-up: `grep -r "failed" .` searches everything because `-r` (recursiv
 `|` feeds one command's output into the next. This is where the shell gets powerful for triage.
 
 ```bash
-# Last 5 failed logins
-grep "failed" access.log | tail -n 5
+# Last 5 failed logins (the word "failed" lives in the app log)
+grep "failed" app.log | tail -n 5
 
 # Last 5 requests from a specific IP
 grep "192.168.1.10" access.log | tail -n 5
@@ -70,7 +70,7 @@ grep "192.168.1.10" access.log | tail -n 5
 # Last 5 requests that returned a 404
 grep "404" access.log | tail -n 5
 
-# How many distinct lines mention an error, counted
+# How many lines mention an error (grep -c does the same in one step)
 grep "ERROR" app.log | wc -l
 ```
 
@@ -84,7 +84,7 @@ tail -n 20 app.log
 tail -f app.log
 
 # Did this user/IP/order-id appear at all, and how often?
-grep -c "order-4821" app.log
+grep -c "u-1042" app.log
 
 # All errors, case-insensitive, with line numbers
 grep -ni "error" app.log
@@ -142,16 +142,6 @@ Writing the query is the easy part; knowing *what to look for* is the skill. A r
 - `grep` finds *what*, `tail`/`head` pick *which slice*, `wc -l` counts. Most triage is some combination of those three.
 - When a test fails or an app misbehaves, the evidence is in a log file. Knowing these commands is the difference between "I'll ask a dev" and "here's the exact line that broke."
 
-## Practice
+---
 
-Two sample logs live in [`exercise/`](exercise): a web `access.log` (nginx/apache style) and an application `app.log`. They share the same timeline, so you can pivot between them like in a real investigation. `cd` into the exercise folder and try:
-
-1. How many requests in `access.log` returned a `500`? (`grep -c`)
-2. Show the last 5 failed logins from `app.log`. (`grep ... | tail`)
-3. Which IP is hammering `POST /login` with `401`s, and how many times?
-4. Find every `ERROR` line in `app.log` with its line number. (`grep -ni`)
-5. The checkout is broken — find the root cause line in `app.log`, then confirm the matching `500`s in `access.log`.
-6. Show only the non-`200` responses in `access.log`. (`grep -v`)
-7. Which user account got locked, and after how many attempts?
-
-> Answers are intentionally not listed — run the commands and read the output. That *is* the exercise.
+This is a reference — keep it open while you work. The exercises that use it are **Part 2** and **Part 3** in the [module README](README.md), with sample logs in [`exercise/`](exercise) and worked answers in [`solution/`](solution).

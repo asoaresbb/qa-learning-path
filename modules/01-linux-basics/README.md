@@ -8,11 +8,11 @@ Everything later in this path runs on a Unix-like machine: the server, the datab
 
 - **The shell** is a program that reads commands and runs them. `bash` and `zsh` are the common ones. A command is a program name followed by arguments and flags (`ls -la /tmp`).
 - **The filesystem** is a single tree rooted at `/`. Paths are absolute (`/home/you/file`) or relative to where you are (`./file`, `../sibling`). `pwd`, `cd`, `ls`, `cat`, `mkdir`, `rm`, `cp`, `mv` are the daily verbs.
-- **Permissions** decide who can read, write or execute a file: three groups (owner, group, other) of three bits (`rwx`). `chmod`, `chown`, and reading the `ls -l` columns.
-- **Processes** are running programs with a PID. `ps`, `top`, `kill`, and running something in the background with `&`.
 - **Pipes and redirection** connect programs: `|` feeds one program's output into the next, `>` writes output to a file, `>>` appends, `<` reads from a file. This is the idea that makes the shell composable — small tools chained into bigger ones (`cat log | grep ERROR | wc -l`).
 
-The mindset to take away: the command line is not a worse GUI, it is a place where work can be *automated*. Anything you can type, you can put in a script.
+You'll also meet **permissions** (who can read/run a file — `chmod`, and the `rwx` columns in `ls -l`) and **processes** (running programs — `ps`, `kill`) as you go, but this module focuses on the two things a QA reaches for daily: navigation and search.
+
+The mindset to take away: the command line is not a worse GUI — it's where small, composable tools (`grep`, `tail`, pipes) let you ask a system precise questions and get exact answers.
 
 ## Exercise
 
@@ -82,12 +82,44 @@ cd path/to/qa-learning-path/modules/01-linux-basics/exercise   # where you clone
 
 ### Part 2 — log triage (the QA core skill)
 
-You should be in the exercise folder now (Part 1 left you here). Run `ls` — you'll see a web `access.log` and an application `app.log`. This is the part to actually drill — it's the skill you'll use on the job. Using `grep`, `tail`, `head` and pipes (`|`), answer questions like:
+You should be in the exercise folder now (Part 1 left you here). Run `ls` — you'll see a web `access.log` and an application `app.log`. They share the same timeline, so you can pivot between them like in a real investigation. This is the part to actually drill — it's the skill you'll use on the job.
 
-- find every line mentioning `failed` in `app.log`;
-- show the last 5 requests that returned a `404` in `access.log`;
-- work out which IP is brute-forcing the login.
+Using `grep`, `tail`, `head` and pipes (`|`), work through these. Keep [`log-triage-cheatsheet.md`](log-triage-cheatsheet.md) open beside you as a command reference.
 
-The full list of practice questions, plus a command reference, is in [`log-triage-cheatsheet.md`](log-triage-cheatsheet.md).
+1. How many requests in `access.log` returned a `500`? (`grep -c`)
+2. Show the last 5 failed logins from `app.log`. (`grep ... | tail`)
+3. Which IP is hammering `POST /login` with `401`s, and how many times?
+4. Find every `ERROR` line in `app.log` with its line number. (`grep -ni`)
+5. There's exactly one `403` (forbidden) in `access.log` — what was the client trying to reach, and is there anything familiar about that IP? (`grep`)
+6. Show only the non-`200` responses in `access.log`. (`grep -v`)
+7. Which user account got locked, and after how many attempts?
 
-> _Optional stretch:_ once pipes and redirection click, try writing a small bash script that automates something repetitive (e.g. a timestamped backup of a folder). Useful to have seen once — but as a QA you'll **operate** the shell far more than you'll **script** it.
+Work through them first — running the commands and reading the output *is* the exercise. Then check your reasoning against [`solution/log-triage-answers.md`](solution/log-triage-answers.md).
+
+### Part 3 — run a real triage
+
+This is the whole job in miniature: a symptom comes in, you find the evidence, and you write it up. Still in the exercise folder, with both `access.log` and `app.log`.
+
+> **Bug report:** *"A user says checkout was failing this morning, around 08:17. Can you look into it?"*
+
+Investigate using only the command line. Work out, with a command and its output for each:
+
+1. **What** went wrong — find the error in `app.log` around that time. (Hint: `grep` the time, or `grep` `CheckoutService`.)
+2. **The matching requests** — find the failed `/checkout` requests in `access.log` and their status code.
+3. **Root cause** — read the `app.log` error lines: *why* did checkout fail? (It's not the app's own bug.)
+4. **Blast radius** — how many times did it happen, and did it hit more than one user? (`grep -c`, and look at the user IDs.)
+
+Then write a short bug report — the deliverable a QA actually hands over:
+
+```text
+Title:    Checkout fails with 500 during payment
+When:     2026-06-10, ~08:17–08:24
+Evidence: app.log — "payment gateway timeout after 30000ms" (CheckoutService)
+          access.log — GET /checkout → 500 (x N)
+Cause:    Payment gateway timing out; order creation then fails.
+Impact:   N failed checkouts, user(s) u-1055
+```
+
+Fill in the real numbers from your own commands — don't copy the template blindly. Confirming the story across *two* logs (the app error and the web 500s line up in time) is exactly how you turn "it's broken" into something a developer can act on.
+
+A worked write-up lives in [`solution/`](solution) — try the whole investigation yourself first.
