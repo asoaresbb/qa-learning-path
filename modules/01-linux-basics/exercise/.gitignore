@@ -1,3 +1,8 @@
 # Sample logs are exercise fixtures — keep them despite the root *.log ignore
 !access.log
 !app.log
+
+# Learner scratch output — ignore any .txt they create while practising,
+# whatever they name it. The only files that belong here are the .log
+# fixtures kept above.
+*.txt
