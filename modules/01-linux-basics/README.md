@@ -94,7 +94,7 @@ Using `grep`, `tail`, `head` and pipes (`|`), work through these. Keep [`linux-c
 6. Show only the non-`200` responses in `access.log`. (`grep -v`)
 7. Which user account got locked, and after how many attempts?
 
-Work through them first — running the commands and reading the output *is* the exercise. Then check your reasoning against the [worked solutions](solution) (Part 2 section).
+Work through them first — running the commands and reading the output *is* the exercise. Then check your reasoning against the [worked solutions](solution.md) (Part 2 section).
 
 ### Part 3 — run a real triage
 
@@ -124,4 +124,4 @@ Practise your redirection while you write it: `>` for the **first** line (create
 
 Confirming the story across *two* logs (the app error and the web 500s line up in time) is exactly how you turn "it's broken" into something a developer can act on.
 
-When you're done, compare your write-up with the [worked solutions](solution) (Part 3 section) — not to match it word for word, but to check you landed the same root cause and blast radius. Try the whole investigation yourself first.
+When you're done, compare your write-up with the [worked solutions](solution.md) (Part 3 section) — not to match it word for word, but to check you landed the same root cause and blast radius. Try the whole investigation yourself first.
