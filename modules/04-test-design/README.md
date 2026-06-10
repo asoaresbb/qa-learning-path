@@ -86,6 +86,8 @@ A worked version in [`solution/`](solution) — do your own first; there's no si
 ## References
 
 - **Michael Bolton & James Bach**, *Testing and Checking Refined* (2013) — the testing/checking distinction. [developsense.com](https://www.developsense.com/blog/2013/09/testing-and-checking-refined/) · [Rapid Software Testing](https://rapid-software-testing.com/)
+- **Michael Bolton**, *Testing is Not Quality; Quality is Not Testing* (2024) — testing produces information about quality; it does not produce or assure quality. Why "QA" overstates what testing does. [developsense.com](https://developsense.com/blog/2024/10/testing-is-not-quality-quality-is-not-testing)
+- **Michael Bolton**, *Quality Engineering Is Not Testing* (2026) — why relabelling testing as "quality engineering" blurs a real skill and promises control over quality that testers don't hold. [developsense.com](https://developsense.com/blog/2026/04/quality-engineering-is-not-testing)
 - **ISTQB**, *Certified Tester Foundation Level Syllabus v4.0* — the test-technique families (black-box, white-box, experience-based) and levels. [istqb.org](https://istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/)
 - **Jez Humble & David Farley**, *Continuous Delivery* (2010) — the four-layer acceptance-test architecture (test → DSL → driver → system under test).
 - **Martin Fowler**, *PageObject* — the page object as a layer that hides UI mechanics behind intent. [martinfowler.com](https://martinfowler.com/bliki/PageObject.html)

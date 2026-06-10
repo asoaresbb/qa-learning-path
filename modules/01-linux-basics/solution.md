@@ -1,6 +1,6 @@
 # Module 1 — worked solutions
 
-Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2** and **Part 3** in the [module README](README.md), with sample logs in [`sample-logs/`](sample-logs). Run the commands from the `sample-logs/` folder.
+Try each exercise yourself first; these are here to check your reasoning, not to copy. The exercises are **Part 2**, **Part 3** and **Part 4** in the [module README](README.md), with sample logs in [`sample-logs/`](sample-logs). Run the commands from the `sample-logs/` folder.
 
 There's usually more than one correct command — what matters is reading the output correctly.
 
@@ -140,3 +140,71 @@ Same six fields as the template in Part 3 — each line traceable to a command y
 ### Why this is the whole job
 
 You started with a vague symptom ("checkout was failing") and ended with something a developer can act on: a time window, the exact error, the root cause, and the blast radius — each backed by a command and its output. Correlating the *app* error with the *web* 500s across two logs is what turns "it's broken" into evidence. That's testing — investigation that produces information someone can act on.
+
+---
+
+## Part 4 — the triage script
+
+The finished `triage.sh`, built up from the four steps. Yours doesn't need to match line for line — what matters is that it runs the Part 2–3 commands for you, takes the log as an argument, and refuses bad input cleanly.
+
+```bash
+#!/bin/bash
+# triage.sh — quick summary of a web access log
+# usage: ./triage.sh <access.log>
+
+log="$1"
+
+# guard: no argument given, or the file doesn't exist
+if [ -z "$log" ]; then
+  echo "usage: ./triage.sh <access.log>"
+  exit 1
+fi
+if [ ! -f "$log" ]; then
+  echo "file not found: $log"
+  exit 1
+fi
+
+echo "== Triage report for $log =="
+echo
+echo "Total requests:    $(wc -l < "$log")"
+echo "500 errors:        $(grep -c ' 500 ' "$log")"
+echo "Non-200 responses: $(grep -vc ' 200 ' "$log")"
+echo
+echo "Top IPs on /login 401s:"
+grep 'POST /login' "$log" | grep '401' | awk '{print $1}' | sort | uniq -c | sort -rn
+```
+
+Run it:
+
+```bash
+chmod +x triage.sh
+./triage.sh access.log
+```
+
+```text
+== Triage report for access.log ==
+
+Total requests:    25
+500 errors:        3
+Non-200 responses: 13
+
+Top IPs on /login 401s:
+   3 192.168.1.77
+   1 192.168.1.88
+```
+
+Every number matches what you found by hand in Part 2 — the script just gathers them in one pass.
+
+### The pieces worth naming
+
+- **`$1`** — the first argument you type after the script name. Storing it in `log="$1"` once, then using `"$log"`, means you change the source in a single place.
+- **`$( ... )`** — *command substitution*. It runs the command inside and drops its output where it sits, so `$(grep -c ' 500 ' "$log")` becomes the number `3` before `echo` prints the line.
+- **`"$log"` in quotes** — protects you if a filename ever contains spaces. A habit worth forming early; it costs nothing and saves a baffling bug later.
+- **`wc -l < "$log"`** — feeding the file in with `<` makes `wc` print just the count, not the filename beside it.
+- **the two guards** — `-z` tests for an empty string (you forgot the argument); `-f` tests that the path is a real file (you typo'd it). `exit 1` stops the script with a non-zero code, the universal shell signal for "this failed."
+
+### Why this is the point
+
+You turned a manual investigation into a tool. The next time a log lands on your desk you run one command instead of six, and you can hand the script to a teammate who's never memorised the pipelines. That's the whole arc of test automation in miniature — notice the repetition, capture it once, and free your attention for the parts that actually need a human. Everything from module 10's API suite to module 19's CI pipeline is this same instinct, scaled up.
+
+**Extend it** (optional): point a second guard at `app.log` and add a line for `grep -c 'ERROR' "$log"`, or have the script take *two* arguments and summarise the web log and the app log together — the cross-log correlation from Part 3, automated.

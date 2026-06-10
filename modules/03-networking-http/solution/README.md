@@ -16,7 +16,7 @@ What to find in the output:
 ## 2. A JSON API
 
 ```bash
-curl -i https://api.github.com/repos/asoaresbb/qa-learning-path
+curl -i https://api.github.com/repos/asoaresbb/quality-engineering-path
 ```
 
 `-i` includes the response headers. Note `Content-Type: application/json` and read the status line.

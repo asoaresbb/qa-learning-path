@@ -19,7 +19,7 @@ The mindset to take away: the command line is not a worse GUI — it's where sma
 > **New to the terminal?** On macOS, open **Terminal** (press `Cmd+Space`, type "Terminal", hit Enter). On Linux, open your terminal app. First move into the folder where you cloned this repo, then into this module's `sample-logs` folder:
 >
 > ```bash
-> cd path/to/qa-learning-path          # wherever you cloned it
+> cd path/to/quality-engineering-path          # wherever you cloned it
 > cd modules/01-linux-basics/sample-logs
 > ```
 >
@@ -77,7 +77,7 @@ When you're done, step out of the scratch folder and delete it, then head into t
 ```bash
 cd ~                                 # leave the folder before deleting it
 rm -rf ~/linux-practice              # delete the whole scratch folder
-cd path/to/qa-learning-path/modules/01-linux-basics/sample-logs   # where you cloned the repo
+cd path/to/quality-engineering-path/modules/01-linux-basics/sample-logs   # where you cloned the repo
 ```
 
 ### Part 2 — log triage (a core testing skill)
@@ -125,3 +125,56 @@ Practise your redirection while you write it: `>` for the **first** line (create
 Confirming the story across *two* logs (the app error and the web 500s line up in time) is exactly how you turn "it's broken" into something a developer can act on.
 
 When you're done, compare your write-up with the [worked solutions](solution.md) (Part 3 section) — not to match it word for word, but to check you landed the same root cause and blast radius. Try the whole investigation yourself first.
+
+### Part 4 — script the boring parts
+
+You just ran the same handful of commands by hand to triage that checkout failure. Do it twice and you'll feel it: the counts, the top-IPs pipeline, the `grep` for errors — the same keystrokes every time a log lands on your desk. That's the signal to **script it**. A script is nothing more than the commands you already know, saved in a file so the machine repeats them for you.
+
+This is a real QA instinct, not a detour: the moment you notice you're repeating yourself, you automate the repetition so your attention is free for the judgement — the same reflex that later becomes "automate the regression checks, explore by hand."
+
+> **On Windows?** A `.sh` script needs a real `bash` to run it — use **WSL** or **Git Bash** (both from the Windows note at the top of the exercise). Plain PowerShell can't run a `.sh` file at all, so don't attempt this part there.
+
+Build it up one step at a time, running it after each — the same before/after habit as Part 1. Work in the `sample-logs` folder so the script has the logs beside it.
+
+**1. A script is just commands in a file.** Put one of your Part 2 commands in a file called `triage.sh`:
+
+```bash
+#!/bin/bash
+echo "500 errors:"
+grep -c ' 500 ' access.log
+```
+
+The first line — the **shebang** — tells the system to run the file with `bash`. Make it executable, then run it:
+
+```bash
+chmod +x triage.sh        # give the file permission to run (the 'x' you see in ls -l)
+./triage.sh               # run it — ./ means "the script here in this folder"
+```
+
+**2. Stop hardcoding the filename.** Right now it only ever reads `access.log`. Make it take the log as an argument so you can point it at any file. `$1` is the first thing you type after the script name:
+
+```bash
+#!/bin/bash
+log="$1"
+echo "500 errors in $log:"
+grep -c ' 500 ' "$log"
+```
+
+```bash
+./triage.sh access.log    # now $log is "access.log"
+```
+
+**3. Guard against mistakes.** What if you forget the argument, or typo the filename? A tool that charges ahead on bad input isn't much of a tool. Check before you work:
+
+```bash
+if [ ! -f "$log" ]; then
+  echo "file not found: $log"
+  exit 1                  # stop, with a non-zero code meaning "something went wrong"
+fi
+```
+
+**4. Make it a real report.** Now fold in the rest of the summary you built by hand in Parts 2–3 — total requests, non-`200`s, and the brute-force IP table — each line labelled so the output reads like something you'd paste into a ticket.
+
+Your goal: running `./triage.sh access.log` should print, in one go, the answers you previously assembled across half a dozen separate commands. Write it yourself first, then compare with the [worked solution](solution.md) (Part 4 section).
+
+> The `exit 1` in step 3 is worth a pause. A script that exits non-zero on failure is exactly how an automated system knows a step passed or failed — you've just met, in one line, the mechanism that module 19 builds on to turn a pull request red.
