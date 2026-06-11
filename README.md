@@ -120,4 +120,4 @@ Books that span the whole path rather than a single module (each module has its 
 
 ## Why I built this
 
-I came to software the long way round — testing first, then automation I taught myself, now a senior QA engineer finishing a computer-engineering degree. The tester-to-engineer path I had to assemble out of order, with gaps I only spotted later. This is the version I wish I'd had: the foundations *under* the tools, in the order that makes them stick — written as I walk it myself, so it's the real route, not a tidy retrospective.
+I came to software the long way round — testing first, then automation I taught myself, now a senior QA engineer who has just finished a computer-engineering degree. The tester-to-engineer path I had to assemble out of order, with gaps I only spotted later. This is the version I wish I'd had: the foundations *under* the tools, in the order that makes them stick — written as I walk it myself, so it's the real route, not a tidy retrospective.
