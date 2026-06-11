@@ -50,7 +50,7 @@ Now try each idea, and **run the `ls` line after each block to see what changed*
 
 ```bash
 # 1. create a nested folder structure
-mkdir -p project/src/utils
+mkdir -p project/tests/api
 ls -R                     # -R lists recursively — see the whole tree you just made
 
 # 2. create a file, then move and rename it
@@ -58,12 +58,12 @@ echo "hello" > old.txt
 ls                        # old.txt is here now
 mv old.txt new.txt        # rename it...
 ls                        # ...old.txt is gone, new.txt appeared
-mv new.txt project/src/   # move it into a subfolder
+mv new.txt project/tests/ # move it into a subfolder
 ls                        # gone from here...
-ls project/src            # ...it's in there now. inspect with ls -l for permissions
+ls project/tests          # ...it's in there now. inspect with ls -l for permissions
 
 # 3. search inside files, count matches, save the result
-echo "TODO: write tests" > project/src/notes.txt
+echo "TODO: write tests" > project/tests/notes.txt
 grep -r "TODO" .          # find the word anywhere below here
 grep -rc "TODO" .         # count matching lines per file
 grep -r "TODO" . > found.txt   # redirect the result into a file (nothing prints!)
