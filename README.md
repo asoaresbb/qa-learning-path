@@ -1,12 +1,14 @@
 # Quality Engineering from the Ground Up
 
-> Building and Testing a Web App, One Layer at a Time
+> From Tester to Engineer — building and testing a web app, one layer at a time
+
+**The argument.** *Testing is not quality, and quality engineering is not testing.* Testing produces information that lets people make decisions about quality; it does not produce or assure quality — that is the work of everyone building the thing. The title says "quality engineering" because that is the term people search for and the one that opens doors; Michael Bolton's distinction is what runs underneath every module. Going from tester to engineer means learning to build the thing well enough to judge what is worth checking — and to see why no amount of checking, however green the suite, adds up to quality. Read the title as the doorway and the content as the case for what testing actually is, and is not. See Bolton's *[Testing is Not Quality; Quality is Not Testing](https://developsense.com/blog/2024/10/testing-is-not-quality-quality-is-not-testing)* (2024) and *[Quality Engineering Is Not Testing](https://developsense.com/blog/2026/04/quality-engineering-is-not-testing)* (2026), and module 4.
 
 A learning path for anyone working toward software quality — testers, QA and quality engineers, and developers who want to test what they build — to understand how systems talk to each other and how to automate the checks across the stack. It moves from the ground up, starting with the environment everything runs on and ending with a full application that the learner has built and tested themselves.
 
-The method matters as much as the topics. Rather than ten disconnected exercises, the work is organised around a single application that grows with each module. The foundations are short drills. From the server module onward, every topic adds a layer to the same project, so the learner sees how the pieces connect instead of meeting them in isolation. The end result is a consultancy website where a candidate submits their details through a form and those details persist in a database, with a complete test suite running automatically on every change.
+**Where it leads.** The same foundation opens several doors — automation or QA engineer, SDET, or a move into development proper. You finish able to *build* a system and to *test* it, which is the ground all of those roles stand on.
 
-> **A note on the name.** "Quality engineering" and "QA" are the terms people search for, so they're on the cover — but this path holds to Michael Bolton's distinction underneath. *Testing is not quality, and quality engineering is not testing.* Testing produces information that lets people make decisions about quality; it doesn't produce or assure quality — that's the work of everyone building the thing. Read the title as the familiar doorway, and the content as an argument for what testing actually is and does. See Bolton's *[Testing is Not Quality; Quality is Not Testing](https://developsense.com/blog/2024/10/testing-is-not-quality-quality-is-not-testing)* (2024) and *[Quality Engineering Is Not Testing](https://developsense.com/blog/2026/04/quality-engineering-is-not-testing)* (2026), and module 4.
+The method matters as much as the topics. Rather than ten disconnected exercises, the work is organised around a single application that grows with each module. The foundations are short drills. From the server module onward, every topic adds a layer to the same project, so the learner sees how the pieces connect instead of meeting them in isolation. The end result is a consultancy website where a candidate submits their details through a form and those details persist in a database, with a complete test suite running automatically on every change.
 
 ## How to use this
 
@@ -114,3 +116,7 @@ Books that span the whole path rather than a single module (each module has its 
 - **Kent Beck**, *Test-Driven Development by Example* — red-green-refactor from the source.
 - **Lisa Crispin & Janet Gregory**, *Agile Testing* — testing as a whole-team activity, with the testing quadrants.
 - **Gojko Adzic, David Evans & Tom Roden**, *Fifty Quick Ideas to Improve Your Tests* (2015) — short, practical ideas on what to test and how to keep a suite valuable. [fiftyquickideas.com](https://www.fiftyquickideas.com/)
+
+## Why I built this
+
+I came to software the long way round — I started in testing, taught myself automation, and now work as a senior QA engineer while finishing a computer-engineering degree. The path from tester to engineer was something I had to assemble myself, out of order, with gaps I only noticed later. This is the path I wish I'd had: the foundations *under* the tools, in the order that makes them stick. I'm writing it as I make that move myself, so it's the real route — not a tidy retrospective.
