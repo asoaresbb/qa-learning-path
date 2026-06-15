@@ -155,6 +155,8 @@ prints, in one go, the summary you assembled by hand in Parts 2–3: the **total
 
     That gives you the two guards step 3 asks for — one for the missing argument, one for the missing file — each printing a message and calling `exit 1`.
 
+First, **create the file in an editor** — a script is too long to type at the prompt. `nano triage.sh` is the simplest (type normally, `Ctrl+O` saves, `Ctrl+X` exits); or open it in VS Code. The `>`/`>>` from Part 3 is for appending lines of *data* to a file, not for writing *code* — that's what an editor is for. Save as you go and re-run in the terminal.
+
 **Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `exercise` folder so the script has the logs beside it — then `./triage.sh access.log` just works, no `../` needed.
 
 1. Make `triage.sh` run just *one* of your Part 2 commands — start with the `500` count. Add the shebang, `chmod +x` it, run it. (You've now proved a script is only commands in a file.)
