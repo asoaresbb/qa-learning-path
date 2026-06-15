@@ -1,6 +1,6 @@
 # Linux cheat sheet — navigation & log triage
 
-The part of the command line you actually reach for when working with a real system: **finding your way around a machine** and **searching text/logs to triage a problem**. It's not testing-specific — a developer debugging an incident, an ops engineer, anyone who reads logs uses exactly these. But it's core fluency for a tester: you rarely *write* shell scripts, you *operate* through the shell and read what happened.
+The part of the command line you actually reach for when working with a real system: **finding your way around a machine** and **searching text/logs to triage a problem**. It's not testing-specific — a developer debugging an incident, an ops engineer, anyone who reads logs uses exactly these. But it's core fluency for a tester: mostly you *operate* through the shell and read what happened — and when you catch yourself retyping the same triage, you capture it in a small script (Part 4).
 
 ## Navigation & files
 
@@ -141,6 +141,30 @@ Writing the query is the easy part; knowing *what to look for* is the skill. A r
 - The shell is **composable**: small tools (`grep`, `tail`, `wc`) chained with `|` answer questions no single tool can.
 - `grep` finds *what*, `tail`/`head` pick *which slice*, `wc -l` counts. Most triage is some combination of those three.
 - When a test fails or an app misbehaves, the evidence is in a log file. Knowing these commands is the difference between "I'll ask a dev" and "here's the exact line that broke."
+
+## Scripting basics (Part 4)
+
+A script is just the commands you already know, saved in a file so the machine repeats them. Capturing repeated triage this way is a core tester instinct — the moment you notice you're retyping the same commands, script it.
+
+| Piece | What it does |
+| --- | --- |
+| `#!/bin/bash` | First line — the *shebang*; tells the system to run this file with bash |
+| `chmod +x triage.sh` | Make the file executable (the `x` in `ls -l`); then run it with `./triage.sh` |
+| `"$1"` | The first argument typed after the script name (`$2` the second, …) |
+| `log="$1"` | Store it once; reuse as `"$log"` — in quotes — everywhere after |
+| `$(command)` | *Command substitution* — run the command, drop its output in place |
+| `if [ cond ]; then … fi` | Run the lines only when `cond` is true; `fi` closes the block |
+| `exit 1` | Stop the script now, signalling failure (`0` = success, non-zero = a problem) |
+
+The condition inside `[ ]` — note `[ ]` is itself a test *command*, so the **spaces are required** (`[ -z`, never `[-z`):
+
+| Test | True when… |
+| --- | --- |
+| `[ -z "$log" ]` | the string is **empty** — you ran the script with no argument |
+| `[ -f "$log" ]` | the path is a **real, existing file** |
+| `[ ! -f "$log" ]` | `!` **negates** — "*not* a real file" |
+
+> Together, `-z` and `! -f` are the two input guards a robust script opens with: bail out early (with a message and `exit 1`) on a missing argument or a missing file, rather than charging ahead on bad input.
 
 ---
 

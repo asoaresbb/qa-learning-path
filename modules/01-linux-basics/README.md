@@ -148,7 +148,12 @@ prints, in one go, the summary you assembled by hand in Parts 2–3: the **total
 - `chmod +x triage.sh` makes the file executable (the `x` you saw in `ls -l`); then run it with `./triage.sh` — the `./` means "the script right here in this folder".
 - `"$1"` — inside the script, the **first argument** you typed after its name. Store it once (`log="$1"`) and reuse `"$log"` — in quotes — everywhere after.
 - `$(command)` — *command substitution*: runs the command and drops its output in place, so `echo "label: $(some-command "$log")"` prints the command's result on a labelled line.
-- `if [ ! -f "$log" ]; then ... fi` — a test; `-f` asks "is this a real file?". Use it to stop early on a missing or mistyped name.
+- `if [ condition ]; then ... fi` — runs the lines between `then` and `fi` **only when the condition is true**, then `fi` closes the block. The surprise: `[ ... ]` isn't special `if` syntax — it's a *command* (a test) that succeeds or fails, so the **spaces around the brackets are required** (`[ -z`, not `[-z`). What goes inside is the condition:
+    - `-z "$log"` — true when the string is **empty**: you ran the script with no argument.
+    - `-f "$log"` — true when the path is a **real, existing file**.
+    - a leading `!` **negates** it, so `[ ! -f "$log" ]` reads "*not* a real file".
+
+    That gives you the two guards step 3 asks for — one for the missing argument, one for the missing file — each printing a message and calling `exit 1`.
 
 **Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `exercise` folder so the script has the logs beside it — then `./triage.sh access.log` just works, no `../` needed.
 
