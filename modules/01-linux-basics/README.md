@@ -77,7 +77,7 @@ When you're done, step out of the scratch folder and delete it, then head into t
 ```bash
 cd ~                                 # leave the folder before deleting it
 rm -rf ~/linux-practice              # delete the whole scratch folder
-cd path/to/quality-engineering-path/modules/01-linux-basics/exercise   # where you cloned the repo
+cd path/to/quality-engineering-path/modules/01-linux-basics/exercise   # back into this module's exercise folder
 ```
 
 ### Part 2 — log triage (a core testing skill)
@@ -142,7 +142,7 @@ This is a real tester's instinct, not a detour: the moment you notice you're rep
 
 prints, in one go, the summary you assembled by hand in Parts 2–3: the **total number of requests**, the count of **`500`s**, the count of **non-`200`** responses, and the **table of IPs** failing `POST /login` with `401`s. Every command you need you already wrote in Part 2 — the new skill is wrapping them in a runnable file.
 
-**New pieces you'll need** — the only things Part 4 adds; look them up here as you go, the way you used `cheatsheet.md` for Part 2:
+**New pieces you'll need** — the only things Part 4 adds; look them up here as you go (they're also gathered in the cheatsheet's *Scripting basics* section, for quick reference later):
 
 - `#!/bin/bash` as the **first line** — the *shebang*; it tells the system to run the file with `bash`.
 - `chmod +x triage.sh` makes the file executable (the `x` you saw in `ls -l`); then run it with `./triage.sh` — the `./` means "the script right here in this folder".
@@ -157,11 +157,11 @@ prints, in one go, the summary you assembled by hand in Parts 2–3: the **total
 
 First, **create the file in an editor** — a script is too long to type at the prompt. `nano triage.sh` is the simplest (type normally, `Ctrl+O` saves, `Ctrl+X` exits); or open it in VS Code. The `>`/`>>` from Part 3 is for appending lines of *data* to a file, not for writing *code* — that's what an editor is for. Save as you go and re-run in the terminal.
 
-**Build it up one step at a time**, running it after each — the same before/after habit as Part 1. Work in the `exercise` folder so the script has the logs beside it — then `./triage.sh access.log` just works, no `../` needed.
+**Build it up in two phases** — first get the bare Part 2 commands printing, *then* strengthen it (an argument, the guards, the labels). Run it after each step, the same before/after habit as Part 1. Work in the `exercise` folder so the script has the logs beside it — then `./triage.sh access.log` just works, no `../` needed.
 
 1. Make `triage.sh` run just *one* of your Part 2 commands — start with the `500` count. Add the shebang, `chmod +x` it, run it. (You've now proved a script is only commands in a file.)
 2. Stop hardcoding `access.log`: take the log as `$1` instead, so you can point the script at any file.
-3. Guard the input — if the argument is missing or the file doesn't exist, print a message and `exit 1` rather than charging ahead on bad input.
+3. Guard the input — if the argument is missing or the file doesn't exist, print a message and `exit 1` rather than charging ahead on bad input. Each guard fits on one line: `if [ ... ]; then echo "..."; exit 1; fi`.
 4. Fill in the rest of the report — total requests, non-`200`s, the `401` IP table — each line labelled so the output reads like something you'd paste into a ticket.
 
 Write it yourself first — the thinking is in choosing which Part 2 commands to reuse and assembling them, not in new commands. Then compare with the [worked solution](solution/README.md) (Part 4 section) — the runnable script is there too, as [`triage.sh`](solution/triage.sh).

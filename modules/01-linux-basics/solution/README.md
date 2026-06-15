@@ -208,3 +208,5 @@ Every number matches what you found by hand in Part 2 — the script just gather
 You turned a manual investigation into a tool. The next time a log lands on your desk you run one command instead of six, and you can hand the script to a teammate who's never memorised the pipelines. That's the whole arc of test automation in miniature — notice the repetition, capture it once, and free your attention for the parts that actually need a human. Everything from module 10's API suite to module 19's CI pipeline is this same instinct, scaled up.
 
 **Extend it** (optional): point a second guard at `app.log` and add a line for `grep -c 'ERROR' "$log"`, or have the script take *two* arguments and summarise the web log and the app log together — the cross-log correlation from Part 3, automated.
+
+Or widen the server-error line: `grep -c ' 500 '` catches only `500`, while `grep -cE ' 5[0-9][0-9] '` catches every 5xx (`500`–`599`) — a more honest "server errors" count once you've met character classes (`[0-9]` = any digit) and `-E` (extended regex).

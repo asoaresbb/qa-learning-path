@@ -21,6 +21,7 @@ The part of the command line you actually reach for when working with a real sys
 | `head -n 10 access.log` | First 10 lines |
 | `tail -n 3 access.log` | Last 3 lines |
 | `tail -f access.log` | Follow the file live — watch new lines as they arrive |
+| `wc -l access.log` | Count the lines — how many requests/entries the log has |
 
 ## Writing & appending
 
@@ -28,8 +29,11 @@ The part of the command line you actually reach for when working with a real sys
 | --- | --- |
 | `echo "Hello" > hello.txt` | Create (or overwrite) a file with "Hello" |
 | `echo "more" >> hello.txt` | Append to the end of the file |
+| `wc -l < hello.txt` | Feed a file *into* a command with `<` (the mirror of `>`) |
 
-> `>` overwrites, `>>` appends. Mixing them up overwrites your file — worth burning in.
+> `>` overwrites, `>>` appends, `<` feeds a file *in*. Mixing up `>`/`>>` overwrites your file — worth burning in.
+>
+> Why `< ` matters for counting: `wc -l access.log` prints `42 access.log` (count **and** filename), but `wc -l < access.log` prints just `42` — the `<` hands `wc` the contents, so it never sees the name. That's why you'll use `$(wc -l < "$log")` for a clean number.
 
 ## Searching with grep
 
@@ -102,7 +106,7 @@ When the log is too long to eyeball and you need *which X happens most* (which I
 
 ```bash
 # Which IPs fail the login most? (the brute-force signature)
-grep '/login' access.log | grep '401' | awk '{print $1}' | sort | uniq -c | sort -rn
+grep 'POST /login' access.log | grep '401' | awk '{print $1}' | sort | uniq -c | sort -rn
 ```
 
 Read the pipeline one stage at a time:
@@ -164,7 +168,12 @@ The condition inside `[ ]` — note `[ ]` is itself a test *command*, so the **s
 | `[ -f "$log" ]` | the path is a **real, existing file** |
 | `[ ! -f "$log" ]` | `!` **negates** — "*not* a real file" |
 
-> Together, `-z` and `! -f` are the two input guards a robust script opens with: bail out early (with a message and `exit 1`) on a missing argument or a missing file, rather than charging ahead on bad input.
+`-z` and `! -f` are the two guards a robust script opens with — bail out early on bad input rather than charging ahead. Each fits on **one line**:
+
+```bash
+if [ -z "$log" ]; then echo "usage: ./triage.sh <file>"; exit 1; fi
+if [ ! -f "$log" ]; then echo "file not found: $log"; exit 1; fi
+```
 
 ---
 
